@@ -1,0 +1,6 @@
+import Link from 'next/link';
+import { Container } from './ui';
+import { ItemGrid, PageIntro } from './content-ui';
+import type { PortfolioItem } from '@/lib/content';
+
+export function ContentListing({ eyebrow, title, description, items, basePath, emptyTitle, emptyDetail, page = 1, hasMore = false }: { eyebrow: string; title: string; description: string; items: PortfolioItem[]; basePath: string; emptyTitle?: string; emptyDetail?: string; page?: number; hasMore?: boolean }) { return <Container className="py-16 sm:py-24"><PageIntro eyebrow={eyebrow} title={title} description={description}/><ItemGrid items={items} basePath={basePath} emptyTitle={emptyTitle} emptyDetail={emptyDetail}/>{(page > 1 || hasMore) && <nav aria-label="Pagination" className="mt-10 flex items-center justify-between border-t border-line pt-6"><span className="muted text-xs">Page {page}</span><div className="flex gap-3">{page > 1 && <Link className="rounded-full border border-line px-4 py-2 text-sm hover:border-accent" href={`${basePath}?page=${page - 1}`}>Previous</Link>}{hasMore && <Link className="rounded-full border border-line px-4 py-2 text-sm hover:border-accent" href={`${basePath}?page=${page + 1}`}>Next</Link>}</div></nav>}</Container>; }

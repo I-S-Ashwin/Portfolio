@@ -1,0 +1,2 @@
+'use client';
+export default function AdminError({reset}:{reset:()=>void}){return <section className="admin-panel" role="alert"><p className="admin-eyebrow">Admin error</p><h1 className="admin-title">Could not load this page</h1><p className="admin-description">Check that the backend schema is deployed and that this session has administrator membership.</p><button className="admin-button admin-button-primary mt-5" onClick={()=>reset()}>Try again</button></section>}

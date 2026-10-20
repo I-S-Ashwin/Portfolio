@@ -1,0 +1,4 @@
+import type { Metadata } from 'next'; import { ContentListing } from '@/components/content-listing'; import { getBlogPosts } from '@/lib/supabase/portfolio-data';
+export const dynamic = 'force-dynamic';
+export const metadata: Metadata = { title: 'Blog — [Your Name]', description: 'Technical writing and notes by [Your Name].', openGraph: { title: 'Writing — [Your Name]', description: 'Technical writing and notes.' } };
+export default async function BlogPage({ searchParams }: { searchParams: { page?: string } }) { const result = await getBlogPosts(searchParams.page); return <ContentListing eyebrow="Writing / 01" title="Notes & writing" description="Published technical ideas, walkthroughs, and learning notes." items={result.items} basePath="/blog" page={result.page} hasMore={result.hasMore} emptyTitle="No writing published yet"/>; }

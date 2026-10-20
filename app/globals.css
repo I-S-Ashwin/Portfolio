@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --paper: #0b0d0e;
+  --surface: #111516;
+  --surface-raised: #171b1b;
+  --ink: #f3f2ed;
+  --muted: #939995;
+  --line: rgba(232, 237, 229, .12);
+  --accent: #c6f36b;
+  --accent-ink: #15200b;
+  --font-sans: "Arial", "Helvetica Neue", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+  --shadow-soft: 0 20px 60px rgba(0,0,0,.24);
+  --space-unit: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+.eyebrow { color: var(--accent); font: 500 11px/1.4 var(--font-mono); letter-spacing: .15em; text-transform: uppercase; }
+.display { font-size: clamp(3.5rem, 9vw, 7.75rem); font-weight: 500; letter-spacing: -.075em; line-height: .94; }
+.section-title { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; letter-spacing: -.055em; line-height: 1.04; }
+.muted { color: var(--muted); }
+.surface-card { border: 1px solid var(--line); border-radius: var(--radius-lg); background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.01)); box-shadow: var(--shadow-soft); }
+.subtle-grid { background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
+.link-arrow { transition: color .2s ease, gap .2s ease; }
+.link-arrow:hover { color: var(--accent); }
+.link-arrow span { display: inline-block; transition: transform .2s ease; }
+.link-arrow:hover span { transform: translateX(4px); }
+@media (max-width: 640px) { .container { width: min(100% - 36px, 1160px); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

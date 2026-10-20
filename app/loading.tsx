@@ -1,0 +1,2 @@
+import { Container } from '@/components/ui';
+export default function Loading() { return <Container className="py-24"><div aria-busy="true"><p className="eyebrow">Loading</p><div className="mt-6 h-10 max-w-sm animate-pulse rounded-lg bg-white/[.06]"/><div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{[1,2,3].map(n => <div key={n} className="surface-card h-64 animate-pulse bg-white/[.02]"/>)}</div></div></Container>; }

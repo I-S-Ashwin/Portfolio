@@ -1,0 +1,4 @@
+import { notFound } from 'next/navigation'; import type { Metadata } from 'next'; import { DetailPage } from '@/components/content-ui'; import { getBlogPost } from '@/lib/supabase/portfolio-data';
+export const dynamic = 'force-dynamic';
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> { const item = await getBlogPost(params.slug); return { title: item ? `${item.title} — Writing` : 'Article not found', description: item?.summary, openGraph: item ? { title: item.title, description: item.summary, type: 'article' } : undefined }; }
+export default async function ArticlePage({ params }: { params: { slug: string } }) { const item = await getBlogPost(params.slug); if (!item) notFound(); return <DetailPage item={item} eyebrow="Writing" backHref="/blog" backLabel="All writing"/>; }
